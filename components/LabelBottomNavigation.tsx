@@ -19,7 +19,7 @@ export default function LabelBottomNavigation() {
     <BottomNavigation
       sx={{
         width: '100%',
-        position: 'fixed',
+        position: 'sticky',
         backgroundColor: 'var(--white)',
         bottom: 0,
         left: 0,

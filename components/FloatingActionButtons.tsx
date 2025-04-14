@@ -12,19 +12,19 @@ export default function FloatingActionButtons() {
   return (
     <div className="flex mt-4 justify-center items-center space-x-8">
         <div className="flex flex-col items-center text-center font-semibold">
-      <Fab sx={{backgroundColor: 'var(--white)'}} size="large"  aria-label="">
+      <Fab sx={{backgroundColor: 'var(--white)', marginBottom: 1 }}  size="large"  aria-label="">
         +
       </Fab>
       Best Sellers
       </div>
       <div className="flex flex-col items-center text-center font-semibold">
-      <Fab sx={{backgroundColor: 'var(--white)'}} size="large"  aria-label="">
+      <Fab sx={{backgroundColor: 'var(--white)', marginBottom: 1 }} size="large"  aria-label="">
         +
       </Fab>
       Shop by Category
       </div>
       <div className="flex flex-col items-center text-center font-semibold">
-      <Fab sx={{backgroundColor: 'var(--white)'}} size="large"  aria-label="">
+      <Fab sx={{backgroundColor: 'var(--white)', marginBottom: 1 }} size="large"  aria-label="">
         +
       </Fab>
       Top Sellers
