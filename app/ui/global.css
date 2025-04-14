@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --yellow: #FAC302;
+  --dark-green: #003844;
+  --white: #EBF2FA;
+  --orange: #ff6b35;
+  --jade: #57A773;
+}
+
 input[type='number'] {
   -moz-appearance: textfield;
   appearance: textfield;

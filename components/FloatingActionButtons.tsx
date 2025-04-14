@@ -10,16 +10,26 @@ import NavigationIcon from '@mui/icons-material/Navigation';
 
 export default function FloatingActionButtons() {
   return (
-    <div className="flex mt-4 justify-center items-center space-x-16">
-      <Fab size="large" color="primary" aria-label="">
-        text
+    <div className="flex mt-4 justify-center items-center space-x-8">
+        <div className="flex flex-col items-center text-center font-semibold">
+      <Fab sx={{backgroundColor: 'var(--white)'}} size="large"  aria-label="">
+        +
       </Fab>
-      <Fab color="primary" aria-label="">
-        text
+      Best Sellers
+      </div>
+      <div className="flex flex-col items-center text-center font-semibold">
+      <Fab sx={{backgroundColor: 'var(--white)'}} size="large"  aria-label="">
+        +
       </Fab>
-      <Fab color="primary" aria-label="">
-        text
+      Shop by Category
+      </div>
+      <div className="flex flex-col items-center text-center font-semibold">
+      <Fab sx={{backgroundColor: 'var(--white)'}} size="large"  aria-label="">
+        +
       </Fab>
+      Top Sellers
+      </div>
+     
     </div>
   );
 }
