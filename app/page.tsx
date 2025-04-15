@@ -35,19 +35,26 @@ export default function Page() {
           }}
         >
           <Box
-          
-            sx={{
-              width: '100%',
-              height: 200,
-              marginTop: 2,
-              marginBottom: 2,
-              borderRadius: 1,
-              backgroundColor: 'rgba(235, 242, 250, 0.5)',
-              '&:hover': {
-                bgcolor: 'primary.dark',
-              },
-            }}
-          />
+          href="/advertisments"
+  sx={{
+    width: '100%',
+    height: 200,
+    marginTop: 2,
+    marginBottom: 2,
+    borderRadius: 1,
+    backgroundColor: 'rgba(235, 242, 250, 0.5)',
+    backgroundImage: 'url(./backgrounds/icecream-bars.webp)', // Add your image here
+    backgroundSize: 'cover', // Ensures the image covers the entire box
+    backgroundPosition: 'center', // Centers the image
+    '&:hover': {
+      bgcolor: 'primary.dark', // Changes background color on hover
+      backgroundImage: 'url(./backgrounds/icecream-bars.webp)', // Keeps the image on hover
+    },
+  }}
+>
+<h1 className="text-center text-3xl mt-3 font-semibold text-red-400">Summer Specials!</h1>
+</Box>
+
         </ThemeProvider>
 
         <h1 className="text-center text-2xl font-semibold">You might like these</h1>
