@@ -36,7 +36,7 @@ export default function FloatingActionButtons() {
       size="large"
       aria-label=""
     >
-      +
+      
     </Fab>
     Categories
   </div>
@@ -51,9 +51,9 @@ export default function FloatingActionButtons() {
       size="large"
       aria-label=""
     >
-      +
+      
     </Fab>
-    Open your Shop!
+    Shop-starter!
   </div>
 </div>
     );
