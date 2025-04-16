@@ -32,7 +32,7 @@ export default function FloatingActionButtons() {
   >
     <Fab
       href="/categories"
-      sx={{ backgroundColor: 'var(--white)', marginBottom: 1 }}
+      sx={{ backgroundColor: 'var(--white)', backgroundImage: 'url(./backgrounds/categories.webp)', backgroundSize: '130%', backgroundPosition: '-10px, -5px', marginBottom: 1 }}
       size="large"
       aria-label=""
     >
@@ -53,7 +53,7 @@ export default function FloatingActionButtons() {
     >
       +
     </Fab>
-    Start your bar!
+    Open your Shop!
   </div>
 </div>
     );
