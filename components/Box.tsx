@@ -5,8 +5,8 @@ import Box from '@mui/material/Box';
 
 export default function BoxBasic() {
   return (
-    <Box sx={{backgroundColor: 'var(--white)'}} component="section" sx={{ p: 2, border: '1px dashed grey' }}>
-      This Box renders as an HTML section element.
-    </Box>
+    <Box component="section" sx={{ backgroundColor: 'var(--white)', p: 2, border: '1px dashed grey' }}>
+  This Box renders as an HTML section element.
+</Box>
   );
 }

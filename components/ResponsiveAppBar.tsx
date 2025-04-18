@@ -16,15 +16,18 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'My Shop','Logout'];
+const settings = ['Profile', 'Account', 'Dashboard', 'My Shop', 'Logout'];
 
 function ResponsiveAppBar() {
+  // State management
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
+  // Handlers for navigation menu
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -38,9 +41,10 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar sx={{backgroundColor: 'var(--dark-green)'}} position="sticky">
+    <AppBar position="sticky" sx={{ backgroundColor: 'var(--dark-green)' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {/* Brand Icon and Title */}
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
@@ -57,13 +61,14 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            candy<span class="text-yellow">bar</span>
+            candy<span className="text-yellow">bar</span>
           </Typography>
 
+          {/* Mobile Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="Open navigation menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -89,11 +94,13 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                  <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
+
+          {/* Mobile Brand */}
           <Typography
             variant="h5"
             noWrap
@@ -110,10 +117,10 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            candy<span class="text-yellow">bar</span>
-
-
+            candy<span className="text-yellow">bar</span>
           </Typography>
+
+          {/* Desktop Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -125,15 +132,17 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
+
+          {/* User Settings */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="User Avatar" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
               id="menu-appbar"
+              sx={{ mt: '45px' }}
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
@@ -149,7 +158,7 @@ function ResponsiveAppBar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+                  <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -159,4 +168,5 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
+
 export default ResponsiveAppBar;

@@ -34,7 +34,7 @@ const Shop = {
 };
 
 
-const Product = [
+const Products = [
   {
     id: '1',
     name: 'Anime Cat Ornament',
@@ -174,4 +174,4 @@ const Product = [
 
 
 
-export { users, customers, invoices, revenue };
+export { User, Products, };
