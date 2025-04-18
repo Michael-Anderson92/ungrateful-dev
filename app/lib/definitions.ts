@@ -2,12 +2,63 @@
 // It describes the shape of the data, and what data type each property should accept.
 // For simplicity of teaching, we're manually defining these types.
 // However, these types are generated automatically if you're using an ORM such as Prisma.
+
+
 export type User = {
   id: string;
   name: string;
   email: string;
   password: string;
+  roles: string[]; // User has multiple roles
+  shop_id?: string; // Optional: links to the shop if the user is a seller
+  created_at: Date;
+  updated_at: Date;
 };
+export type Shop = {
+  id: string; // Unique identifier for each shop
+  name: string; // Name of the shop
+  owner_id: string; // Links to the User who owns this shop
+  description: string; // Description of the shop
+  created_at: Date; // Timestamp for shop creation
+  updated_at: Date; // Timestamp for shop last update
+};
+
+export type Product = {
+  id: string;
+  name: string;
+  description: string;
+  stock: number;
+  category: string;
+  subcategory: string;
+  tags: string[];
+  rating: number;
+  reviews: number;
+  created_at: string;
+  updated_at: string;
+  price: number; // Price in cents
+  image_url: string; // URL to the product image
+}
+
+export type Category = {
+  id: string;
+  name: string;
+  description: string;
+  image_url: string;
+  created_at: string;
+  updated_at: string;
+  products: Product[];
+  subcategories: Subcategory[];
+}
+export type Subcategory = {
+  id: string;
+  name: string;
+  description: string;
+  image_url: string;
+  created_at: string;
+  updated_at: string;
+  products: Product[];
+  category: Category;
+}
 
 export type Customer = {
   id: string;
@@ -16,73 +67,3 @@ export type Customer = {
   image_url: string;
 };
 
-export type Invoice = {
-  id: string;
-  customer_id: string;
-  amount: number;
-  date: string;
-  // In TypeScript, this is called a string union type.
-  // It means that the "status" property can only be one of the two strings: 'pending' or 'paid'.
-  status: 'pending' | 'paid';
-};
-
-export type Revenue = {
-  month: string;
-  revenue: number;
-};
-
-export type LatestInvoice = {
-  id: string;
-  name: string;
-  image_url: string;
-  email: string;
-  amount: string;
-};
-
-// The database returns a number for amount, but we later format it to a string with the formatCurrency function
-export type LatestInvoiceRaw = Omit<LatestInvoice, 'amount'> & {
-  amount: number;
-};
-
-export type InvoicesTable = {
-  id: string;
-  customer_id: string;
-  name: string;
-  email: string;
-  image_url: string;
-  date: string;
-  amount: number;
-  status: 'pending' | 'paid';
-};
-
-export type CustomersTableType = {
-  id: string;
-  name: string;
-  email: string;
-  image_url: string;
-  total_invoices: number;
-  total_pending: number;
-  total_paid: number;
-};
-
-export type FormattedCustomersTable = {
-  id: string;
-  name: string;
-  email: string;
-  image_url: string;
-  total_invoices: number;
-  total_pending: string;
-  total_paid: string;
-};
-
-export type CustomerField = {
-  id: string;
-  name: string;
-};
-
-export type InvoiceForm = {
-  id: string;
-  customer_id: string;
-  amount: number;
-  status: 'pending' | 'paid';
-};

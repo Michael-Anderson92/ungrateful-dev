@@ -19,11 +19,11 @@ const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'My Shop', 'Logout'];
 
 function ResponsiveAppBar() {
-  // State management
+  // State management for menus
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-  // Handlers for navigation menu
+  // Handlers for navigation and user menus
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -44,7 +44,7 @@ function ResponsiveAppBar() {
     <AppBar position="sticky" sx={{ backgroundColor: 'var(--dark-green)' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Brand Icon and Title */}
+          {/* Brand Icon and Title for Desktop */}
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
@@ -64,7 +64,7 @@ function ResponsiveAppBar() {
             candy<span className="text-yellow">bar</span>
           </Typography>
 
-          {/* Mobile Menu */}
+          {/* Mobile Navigation Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -100,7 +100,7 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
 
-          {/* Mobile Brand */}
+          {/* Mobile Brand Icon */}
           <Typography
             variant="h5"
             noWrap
@@ -120,7 +120,7 @@ function ResponsiveAppBar() {
             candy<span className="text-yellow">bar</span>
           </Typography>
 
-          {/* Desktop Menu */}
+          {/* Desktop Navigation */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -133,7 +133,7 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          {/* User Settings */}
+          {/* User Settings Menu */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
