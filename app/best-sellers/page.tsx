@@ -15,7 +15,7 @@ export default function Page() {
       style={{ backgroundColor: "var(--yellow)", backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       {/* AppBar at the top */}
-      <ResponsiveAppBar position="fixed" />
+      <ResponsiveAppBar />
 
       {/* Main Content */}
       <main className="flex-grow flex flex-col p-6">
