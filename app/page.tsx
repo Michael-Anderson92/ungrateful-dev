@@ -13,6 +13,29 @@ import LabelBottomNavigation from '@/components/LabelBottomNavigation';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ResponsiveSearchButton from '@/components/ResponsiveSearchButton';
 
+// Liked products data
+const likedProducts = [
+  { id: 1, name: 'Chocolate Bar', color: '#FF5733', category: 'Sweets' },
+  { id: 2, name: 'Vanilla Cone', color: '#FFC300', category: 'Ice Cream' },
+  { id: 3, name: 'Strawberry Swirl', color: '#DAF7A6', category: 'Ice Cream' },
+];
+
+// All products data
+const allProducts = [
+  { id: 4, name: 'Mint Chip', color: '#C70039', category: 'Ice Cream' },
+  { id: 5, name: 'Cookie Dough', color: '#900C3F', category: 'Ice Cream' },
+  { id: 6, name: 'Rocky Road', color: '#581845', category: 'Ice Cream' },
+  { id: 7, name: 'Candy Cane', color: '#FF69B4', category: 'Sweets' },
+  { id: 8, name: 'Gummy Bears', color: '#FF8C00', category: 'Sweets' },
+];
+
+// Get recommended products
+const recommendedProducts = allProducts.filter(
+  (product) =>
+    likedProducts.some((liked) => liked.category === product.category) &&
+    !likedProducts.some((liked) => liked.id === product.id)
+);
+
 export default function Page() {
   // Theme for advertisements box
   const theme = createTheme({
@@ -51,11 +74,11 @@ export default function Page() {
               marginBottom: 2,
               borderRadius: 1,
               backgroundColor: 'rgba(235, 242, 250, 0.5)',
-              backgroundImage: 'url(./backgrounds/icecream-bars.webp)', // Add your image here
+              backgroundImage: 'url(./backgrounds/icecream-bars.webp)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               '&:hover': {
-                bgcolor: 'primary.dark', // Changes background color on hover
+                bgcolor: 'primary.dark',
               },
             }}
           >
@@ -75,20 +98,24 @@ export default function Page() {
             padding: '8px',
           }}
         >
-          {Array.from({ length: 10 }).map((_, index) => (
-            <Box
-              key={index}
-              sx={{
+          {recommendedProducts.map((item) => (
+            <div
+              key={item.id}
+              style={{
                 flex: '0 0 28%',
                 aspectRatio: '1 / 1',
-                backgroundColor: 'rgba(235, 242, 250, 0.5)',
-                borderRadius: 1,
+                backgroundColor: item.color,
+                borderRadius: '8px',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                fontSize: '1rem',
+                fontWeight: 'bold',
               }}
-            />
+            >
+              {item.name}
+            </div>
           ))}
         </div>
 
