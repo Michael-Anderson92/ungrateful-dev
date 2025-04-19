@@ -23,10 +23,32 @@ const likedProducts = [
 // All products data
 const allProducts = [
   { id: 4, name: 'Mint Chip', color: '#C70039', category: 'Ice Cream' },
-  { id: 5, name: 'Cookie Dough', color: '#900C3F', category: 'Ice Cream' },
+  { id: 5, name: 'Cookies', color: '#900C3F', category: 'Ice Cream' },
   { id: 6, name: 'Rocky Road', color: '#581845', category: 'Ice Cream' },
   { id: 7, name: 'Candy Cane', color: '#FF69B4', category: 'Sweets' },
   { id: 8, name: 'Gummy Bears', color: '#FF8C00', category: 'Sweets' },
+];
+
+const allShops = [
+  { id: 1, name: 'Ice Cream Shop', color: '#FF5733' },
+  { id: 2, name: 'Candy Store', color: '#FFC300' },
+  { id: 3, name: 'Chocolate Factory', color: '#DAF7A6' },
+  { id: 4, name: 'Sweet Treats', color: '#C70039' },
+  { id: 5, name: 'Gourmet Delights', color: '#900C3F' },
+  { id: 6, name: 'Sugar Rush', color: '#581845' },
+  { id: 7, name: 'Candy Land', color: '#FF69B4' },
+  { id: 8, name: 'Sweets Paradise', color: '#FF8C00' },
+]
+
+const advertisedShops = [
+  { id: 1, name: 'Ice Cream Shop', color: '#FF5733' },
+  { id: 2, name: 'Candy Store', color: '#FFC300' },
+  { id: 3, name: 'Chocolate Factory', color: '#DAF7A6' },
+  { id: 4, name: 'Sweet Treats', color: '#C70039' },
+  { id: 5, name: 'Gourmet Delights', color: '#900C3F' },
+  { id: 6, name: 'Sugar Rush', color: '#581845' },
+  { id: 7, name: 'Candy Land', color: '#FF69B4' },
+  { id: 8, name: 'Sweets Paradise', color: '#FF8C00' },
 ];
 
 // Get recommended products
@@ -66,30 +88,38 @@ export default function Page() {
 
         {/* Advertisement Box */}
         <ThemeProvider theme={theme}>
-          <Box
-            sx={{
-              width: '100%',
-              height: 200,
-              marginTop: 2,
-              marginBottom: 2,
-              borderRadius: 1,
-              backgroundColor: 'rgba(235, 242, 250, 0.5)',
-              backgroundImage: 'url(./backgrounds/icecream-bars.webp)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              '&:hover': {
-                bgcolor: 'primary.dark',
-              },
-            }}
-          >
-            <h1 className="text-center text-3xl mt-3 font-semibold text-red-400">
-              Summer Specials!
-            </h1>
-          </Box>
-        </ThemeProvider>
+  <Box
+    sx={{
+      width: '100%',
+      height: 200,
+      marginTop: 2,
+      marginBottom: 4,
+      borderRadius: 1,
+      backgroundColor: 'rgba(235, 242, 250, 0.5)',
+      backgroundImage: 'url(./backgrounds/icecream-bars.webp)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
+      transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+    }}
+    onMouseOver={(e) => {
+      e.currentTarget.style.transform = 'scale(1.05)'; // Slight zoom
+      e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.5)'; // Enhanced shadow
+    }}
+    onMouseOut={(e) => {
+      e.currentTarget.style.transform = 'scale(1)'; // Reset zoom
+      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.5)'; // Reset shadow
+    }}
+  >
+    <h1 className="text-center text-3xl mt-3 font-semibold text-red-400">
+      Summer Specials!
+    </h1>
+  </Box>
+</ThemeProvider>
+
 
         {/* Recommendations Section */}
-        <h1 className="text-center text-2xl font-semibold">You might like these</h1>
+        <h1 className="text-center text-2xl font-semibold">Recommended for you</h1>
         <div
           style={{
             display: 'flex',
@@ -100,50 +130,78 @@ export default function Page() {
         >
           {recommendedProducts.map((item) => (
             <div
-              key={item.id}
-              style={{
-                flex: '0 0 28%',
-                aspectRatio: '1 / 1',
-                backgroundColor: item.color,
-                borderRadius: '8px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-                fontSize: '1rem',
-                fontWeight: 'bold',
-              }}
-            >
-              {item.name}
-            </div>
+            key={item.id}
+            style={{
+              flex: '0 0 28%',
+              border: '1px solid #fff',
+              aspectRatio: '1 / 1',
+              backgroundColor: item.color,
+              borderRadius: '8px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out', // Smooth animation
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'scale(1.05)'; // Slight zoom
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.5)'; // Enhanced shadow
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'scale(1)'; // Reset zoom
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.5)'; // Reset shadow
+            }}
+          >
+            {item.name}
+          </div>
+          
           ))}
         </div>
 
         {/* More Content Section */}
-        <h1 className="text-center text-2xl font-semibold mt-2">More stuff</h1>
-        <div
-          style={{
-            display: 'grid',
-            gap: '16px',
-            padding: '8px',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-          }}
-        >
-          {Array.from({ length: 8 }).map((_, index) => (
-            <Box
-              key={index}
-              sx={{
-                aspectRatio: '3 / 4',
-                backgroundColor: 'rgba(235, 242, 250, 0.5)',
-                borderRadius: 1,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-              }}
-            />
-          ))}
-        </div>
+        {/* Trending Shops Section */}
+<h1 className="text-center text-2xl font-semibold mt-2">Trending Shops</h1>
+<div
+  style={{
+    display: 'grid',
+    gap: '16px',
+    padding: '8px',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+  }}
+>
+  {advertisedShops.map((shop) => (
+    <Box
+      key={shop.id}
+      sx={{
+        aspectRatio: '3 / 4',
+        border: '1px solid #fff',
+        backgroundColor: shop.color,
+        borderRadius: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
+        fontWeight: 'bold',
+        fontSize: '1rem',
+        transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out', // Smooth transition
+      }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.transform = 'scale(1.05)'; // Slight zoom
+        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.5)'; // Enhanced shadow
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.transform = 'scale(1)'; // Reset zoom
+        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.5)'; // Reset shadow
+      }}
+    >
+      {shop.name}
+    </Box>
+  ))}
+</div>
+
+
 
         {/* Mission Section */}
         <div className="flex flex-col items-center mb-32">
