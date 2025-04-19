@@ -121,50 +121,53 @@ export default function Page() {
         {/* Recommendations Section */}
         <h1 className="text-center text-2xl mb-2 font-semibold">Recommended for you</h1>
         <div
-          style={{
-            display: 'flex',
-            overflowX: 'auto',
-            overflow: 'hidden',
-            gap: '16px',
-            padding: '8px',
-          }}
-        >
-          {recommendedProducts.map((item) => (
-            <div
-            key={item.id}
-            style={{
-              flex: '0 0 28%',
-              border: '1px solid #fff',
-              aspectRatio: '1 / 1',
-              backgroundColor: item.color,
-              marginBottom: '16px',
-              borderRadius: '8px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
-              fontSize: '1rem',
-              fontWeight: 'bold',
-              transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out', // Smooth animation
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'scale(1.05)'; // Slight zoom
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.5)'; // Enhanced shadow
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'scale(1)'; // Reset zoom
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.5)'; // Reset shadow
-            }}
-          >
-            {item.name}
-          </div>
-          
-          ))}
-        </div>
+  style={{
+    display: 'flex',
+    overflowX: 'auto',
+    overflow: 'hidden',
+    gap: '16px',
+    padding: '8px',
+  }}
+>
+  {recommendedProducts.map((item) => (
+    <Link href={`/product/${item.id}`} key={item.id} passHref>
+      <div
+        style={{
+          width: '120px', // Fixed width
+          height: '120px', // Fixed height
+          border: '1px solid #fff',
+          backgroundColor: item.color,
+          marginBottom: '16px',
+          borderRadius: '8px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
+          fontSize: '1rem',
+          fontWeight: 'bold',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out', // Smooth animation
+          flexShrink: 0, // Prevent shrinking
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.transform = 'scale(1.05)'; // Slight zoom
+          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.5)'; // Enhanced shadow
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.transform = 'scale(1)'; // Reset zoom
+          e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.5)'; // Reset shadow
+        }}
+      >
+        {item.name}
+      </div>
+    </Link>
+  ))}
+</div>
+
 
         {/* More Content Section */}
         {/* Trending Shops Section */}
-<h1 className="text-center text-2xl mb-2 font-semibold mt-2">Trending Shops</h1>
+        <h1 className="text-center text-2xl mb-2 font-semibold mt-2">Trending Shops</h1>
 <div
   style={{
     display: 'grid',
@@ -174,34 +177,38 @@ export default function Page() {
   }}
 >
   {advertisedShops.map((shop) => (
-    <Box
-      key={shop.id}
-      sx={{
-        aspectRatio: '3 / 4',
-        border: '1px solid #fff',
-        backgroundColor: shop.color,
-        borderRadius: 1,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
-        fontWeight: 'bold',
-        fontSize: '1rem',
-        transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out', // Smooth transition
-      }}
-      onMouseOver={(e) => {
-        e.currentTarget.style.transform = 'scale(1.05)'; // Slight zoom
-        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.5)'; // Enhanced shadow
-      }}
-      onMouseOut={(e) => {
-        e.currentTarget.style.transform = 'scale(1)'; // Reset zoom
-        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.5)'; // Reset shadow
-      }}
-    >
-      {shop.name}
-    </Box>
+    <Link href={`/shops/${shop.id}`} key={shop.id} passHref>
+      <Box
+        sx={{
+          aspectRatio: '3 / 4',
+          border: '1px solid #fff',
+          backgroundColor: shop.color,
+          borderRadius: 1,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
+          fontWeight: 'bold',
+          fontSize: '1rem',
+          cursor: 'pointer', // Cursor indicates clickable action
+          transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.transform = 'scale(1.05)'; // Slight zoom
+          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.5)'; // Enhanced shadow
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.transform = 'scale(1)'; // Reset zoom
+          e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.5)'; // Reset shadow
+        }}
+      >
+        {shop.name}
+      </Box>
+    </Link>
   ))}
 </div>
+
+
 
 
 
