@@ -92,7 +92,7 @@ export default function Page() {
     sx={{
       width: '100%',
       height: 200,
-      marginTop: 2,
+      marginTop: 4,
       marginBottom: 4,
       borderRadius: 1,
       backgroundColor: 'rgba(235, 242, 250, 0.5)',
@@ -119,11 +119,12 @@ export default function Page() {
 
 
         {/* Recommendations Section */}
-        <h1 className="text-center text-2xl font-semibold">Recommended for you</h1>
+        <h1 className="text-center text-2xl mb-2 font-semibold">Recommended for you</h1>
         <div
           style={{
             display: 'flex',
             overflowX: 'auto',
+            overflow: 'hidden',
             gap: '16px',
             padding: '8px',
           }}
@@ -136,6 +137,7 @@ export default function Page() {
               border: '1px solid #fff',
               aspectRatio: '1 / 1',
               backgroundColor: item.color,
+              marginBottom: '16px',
               borderRadius: '8px',
               display: 'flex',
               justifyContent: 'center',
@@ -162,7 +164,7 @@ export default function Page() {
 
         {/* More Content Section */}
         {/* Trending Shops Section */}
-<h1 className="text-center text-2xl font-semibold mt-2">Trending Shops</h1>
+<h1 className="text-center text-2xl mb-2 font-semibold mt-2">Trending Shops</h1>
 <div
   style={{
     display: 'grid',
@@ -204,7 +206,7 @@ export default function Page() {
 
 
         {/* Mission Section */}
-        <div className="flex flex-col items-center mb-32">
+        <div className="flex flex-col items-center mt-4 mb-32">
           <h1 className="text-2xl font-semibold mt-2">Our Mission</h1>
           <p className="text-center text-lg mt-2">
             Our mission is to provide a seamless and enjoyable shopping experience for our
