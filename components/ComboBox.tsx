@@ -1,7 +1,8 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { Category } from '../app/lib/definitions'; // Import the type
 import { supabase } from '../app/lib/supaBaseClient'; // Adjust the import to your actual path
 
 export default function ComboBox() {
@@ -11,14 +12,16 @@ export default function ComboBox() {
   useEffect(() => {
     const fetchCategories = async () => {
       const { data, error } = await supabase
-        .from('Category')
+        .from('categories')
         .select('name');
       if (error) {
         setError(error.message);
         return;
       }
-      setCategories(data ? data.map((category: Category) => category.name) : []);
-    };
+      setCategories(
+        Array.isArray(data) ? data.map((category: { name: string }) => category.name) : []
+      );
+          };
     fetchCategories();
   }, []);
 

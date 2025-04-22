@@ -42,30 +42,30 @@ export type Product = {
 }
 
 export type Category = {
-  id: string;
-  name: string;
-  description: string;
-  image_url: string;
-  created_at: string;
-  updated_at: string;
-  products: Product[];
-  subcategories: Subcategory[];
-}
-export type Subcategory = {
-  id: string;
-  name: string;
-  description: string;
-  image_url: string;
-  created_at: string;
-  updated_at: string;
-  products: Product[];
-  category: Category;
-}
-
-export type Customer = {
-  id: string;
-  name: string;
-  email: string;
-  image_url: string;
+  id: string;         // UUID
+  name: string;       // VARCHAR
+  description: string; // TEXT
+  image_url: string;   // TEXT
+  created_at: string;  // TIMESTAMPTZ
+  updated_at: string;  // TIMESTAMPTZ
 };
+
+
+// export type Subcategory = {
+//   id: string;
+//   name: string;
+//   description: string;
+//   image_url: string;
+//   created_at: string;
+//   updated_at: string;
+//   products: Product[];
+//   category: Category;
+// }
+
+// export type Customer = {
+//   id: string;
+//   name: string;
+//   email: string;
+//   image_url: string;
+// };
 
