@@ -4,6 +4,8 @@
 // However, these types are generated automatically if you're using an ORM such as Prisma.
 
 
+// Started working on Supabase integration. Added users, shops, products, and categories.
+
 export type User = {
   id: string;
   name: string;
