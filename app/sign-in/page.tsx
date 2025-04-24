@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -6,6 +8,7 @@ import '@fontsource/roboto/700.css';
 import ResponsiveAppBar from '@/components/ResponsiveAppBar';
 import LabelBottomNavigation from '@/components/LabelBottomNavigation';
 import ResponsiveSearchButton from '@/components/ResponsiveSearchButton';
+import ComboBox from '@/components/ComboBox';
 
 export default function Page() {
   return (
@@ -19,7 +22,7 @@ export default function Page() {
 
       {/* Main Content */}
       <main className="flex-grow flex flex-col p-6">
-    This is where your products will be displayed
+    Sign in Page
 
       </main>
 

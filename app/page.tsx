@@ -124,7 +124,6 @@ export default function Page() {
   style={{
     display: 'flex',
     overflowX: 'auto',
-    overflow: 'hidden',
     gap: '16px',
     padding: '8px',
   }}

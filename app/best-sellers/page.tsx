@@ -20,7 +20,7 @@ export default function Page() {
       {/* Main Content */}
       <main className="flex-grow flex flex-col p-6">
     
-
+Best Sellers Page
         
 
         
