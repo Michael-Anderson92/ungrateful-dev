@@ -5,7 +5,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import ResponsiveAppBar from '@/components/ResponsiveAppBar';
+import ResponsiveAppBarV2 from '@/components/ResponsiveAppBarV2';
 import LabelBottomNavigation from '@/components/LabelBottomNavigation';
 import ResponsiveSearchButton from '@/components/ResponsiveSearchButton';
 import ComboBox from '@/components/ComboBox';
@@ -18,12 +18,12 @@ export default function Page() {
       style={{ backgroundColor: "var(--yellow)", backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       {/* AppBar at the top */}
-      <ResponsiveAppBar />
+      <ResponsiveAppBarV2 />
 
       {/* Main Content */}
       <main className="flex-grow flex flex-col p-6">
-        <ComboBox />
-    
+        <h1 className="text-xl text-center">What are you looking for today{/* ,User's Name */}? </h1>
+        
 
       </main>
 

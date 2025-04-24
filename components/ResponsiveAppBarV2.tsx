@@ -14,14 +14,33 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import ComboBox from './ComboBox'; // Importing ComboBox component
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'My Shop', 'Logout'];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBarV2() {
   // State management for menus
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [appBarHeight, setAppBarHeight] = React.useState('64px'); // Initial height
+  const [isComboBoxVisible, setIsComboBoxVisible] = React.useState(false); // Visibility state for ComboBox
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setAppBarHeight('128px'); // Target height
+    }, 100); // Delay to ensure the page has loaded
+
+    // Update ComboBox visibility after transition
+    const visibilityTimer = setTimeout(() => {
+      setIsComboBoxVisible(true);
+    }, 500); // Sync with height transition duration (0.5s)
+
+    return () => {
+      clearTimeout(timer); // Cleanup timers
+      clearTimeout(visibilityTimer);
+    };
+  }, []);
 
   // Handlers for navigation and user menus
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -41,14 +60,23 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: 'var(--dark-green)' }}>
+    <AppBar
+      position="sticky"
+      sx={{
+        backgroundColor: 'var(--dark-green)',
+        height: appBarHeight, // Dynamic height
+        transition: 'height 0.5s ease-in-out', // Smooth transition
+      }}
+    >
       <Container maxWidth="xl">
-      <Toolbar disableGutters
-        sx={{
+        <Toolbar
+          disableGutters
+          sx={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-        }}>
+          }}
+        >
           {/* Brand Icon and Title for Desktop */}
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
@@ -169,9 +197,20 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
         </Toolbar>
+
+        {/* Add ComboBox Below Navigation Items */}
+        <Box
+          sx={{
+            mt: 1,
+            display: isComboBoxVisible ? 'flex' : 'none', // Visibility controlled
+            justifyContent: 'center',
+          }}
+        >
+          <ComboBox />
+        </Box>
       </Container>
     </AppBar>
   );
 }
 
-export default ResponsiveAppBar;
+export default ResponsiveAppBarV2;
