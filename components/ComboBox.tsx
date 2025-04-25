@@ -43,9 +43,9 @@ export default function ComboBox() {
     <Autocomplete
       disablePortal
       options={categories}
-      sx={{ width: 300 }}
+      sx={{ width: 370, backgroundColor: 'var(--white)', borderRadius: '10px', }} // Set background color
       onChange={handleSelect} // Handle dropdown selection
-      renderInput={(params) => <TextField {...params} label="Category" />}
+      renderInput={(params) => <TextField {...params} label="All Categories" />}
     />
   );
 }

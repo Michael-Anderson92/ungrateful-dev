@@ -28,7 +28,7 @@ function ResponsiveAppBarV2() {
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      setAppBarHeight('128px'); // Target height
+      setAppBarHeight('144px'); // Target height
     }, 100); // Delay to ensure the page has loaded
 
     // Update ComboBox visibility after transition
