@@ -10,7 +10,12 @@ import '@fontsource/roboto/700.css';
 
 export default function Page() {
   const [devQuote, setDevQuote] = useState("*adjusts glasses* Oh, visitors. How... thrilling.");
-  const [hoverMessage, setHoverMessage] = useState("");
+  const [hoverMessages, setHoverMessages] = useState({
+    dollar: "",
+    five: "",
+    emotional: "",
+    custom: ""
+  });
   const [customAmount, setCustomAmount] = useState("");
   const [showCustomInput, setShowCustomInput] = useState(false);
   
@@ -59,16 +64,41 @@ export default function Page() {
   
   return (
     <main className="bg-black min-h-screen text-gray-300 relative flex flex-col">
-      <div className="flex-grow">
-        <h1 className="text-center text-5xl pt-12 text-purple-500 font-bold">
-          The Ungrateful Developer
-        </h1>
-        <p className="text-center text-gray-500 mt-2 italic">*sigh* ...I guess you can donate or whatever</p>
+      <div className="flex-grow px-4">
+        <div className="relative">
+          <h1 className="text-center text-4xl md:text-5xl pt-12 text-purple-500 font-bold">
+            The Ungrateful Developer
+          </h1>
+          <p className="text-center text-gray-500 mt-2 italic">*sigh* ...I guess you can donate or whatever</p>
+          
+          {/* Developer moved below title on mobile */}
+          <div className="md:absolute static md:top-8 md:right-8 flex justify-center mt-8 md:mt-0">
+            <div className="relative w-32 h-32">
+              {/* Developer cartoon - CSS art */}
+              <div className="relative w-32 h-32">
+                {/* Big head */}
+                <div className="absolute w-28 h-28 bg-[#FFE4C4] rounded-full left-2 top-2"></div>
+                {/* Glasses */}
+                <div className="absolute w-24 h-6 border-2 border-black left-4 top-14">
+                  <div className="absolute w-10 h-5 bg-[#ADD8E6] left-0 rounded"></div>
+                  <div className="absolute w-10 h-5 bg-[#ADD8E6] right-0 rounded"></div>
+                </div>
+                {/* Hoodie */}
+                <div className="absolute w-32 h-16 bg-gray-800 bottom-0 rounded-t-full"></div>
+                {/* Speech bubble */}
+                <div className="absolute -left-64 top-4 w-60 bg-white text-black p-4 rounded-lg hidden md:block">
+                  <p className="text-sm font-mono">{devQuote}</p>
+                  <div className="absolute -right-4 top-4 w-0 h-0 border-t-8 border-l-8 border-b-8 border-t-transparent border-l-white border-b-transparent"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         
-        <div className="flex justify-center mt-16">
-          <div className="w-2/3 border-2 border-purple-800 rounded-lg bg-gray-900">
-            <div className="text-center p-8">
-              <h1 className="text-2xl text-purple-400">
+        <div className="flex justify-center mt-8 md:mt-16">
+          <div className="w-full md:w-2/3 border-2 border-purple-800 rounded-lg bg-gray-900">
+            <div className="text-center p-4 md:p-8">
+              <h1 className="text-xl md:text-2xl text-purple-400">
                 Oh look, another person who thinks they can buy my validation
                 <p className="text-sm text-gray-500 mt-4">
                   "Your donation helps support my chronic eye-rolling condition"
@@ -76,58 +106,70 @@ export default function Page() {
               </h1>
             </div>
 
-            <div className="grid grid-cols-4 gap-6 p-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 p-4 md:p-8">
               <div className="text-xl text-center">
                 <button 
                   className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
                   onClick={() => handlePayment(1)}
-                  onMouseEnter={() => setHoverMessage("Wow, a whole dollar? Do I owe you change?")}
-                  onMouseLeave={() => setHoverMessage("")}
+                  onMouseEnter={() => setHoverMessages({...hoverMessages, dollar: "Wow, a whole dollar? Do I owe you change?"})}
+                  onMouseLeave={() => setHoverMessages({...hoverMessages, dollar: ""})}
                 >
                   $1
                   <p className="text-sm mt-2 text-gray-500">
                   *Slow Clap* <br></br>The Sympathy Donation
                   </p>
                 </button>
+                {hoverMessages.dollar && (
+                  <p className="text-center text-purple-400 mt-2 italic">{hoverMessages.dollar}</p>
+                )}
               </div>
               <div className="text-xl text-center">
                 <button 
                   className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
                   onClick={() => handlePayment(5)}
-                  onMouseEnter={() => setHoverMessage("Five bucks? Big spender over here. What, are you trying to impress me?")}
-                  onMouseLeave={() => setHoverMessage("")}
+                  onMouseEnter={() => setHoverMessages({...hoverMessages, five: "Five bucks? Big spender over here. What, are you trying to impress me?"})}
+                  onMouseLeave={() => setHoverMessages({...hoverMessages, five: ""})}
                 >
                   $5
                   <p className="text-sm mt-2 text-gray-500">
                   The Slightly Less Insulting Donation
                   </p>
                 </button>
+                {hoverMessages.five && (
+                  <p className="text-center text-purple-400 mt-2 italic">{hoverMessages.five}</p>
+                )}
               </div>
               <div className="text-xl text-center">
                 <button 
                   className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
                   onClick={() => handlePayment(73.21)}
-                  onMouseEnter={() => setHoverMessage("This completely arbitrary amount represents the cost of every bug that's made me reconsider my career choices. It covers lost sanity, shattered dreams, and the existential dread induced by CSS not aligning properly. Donate now and help fund my inevitable descent into madness.")}
-                  onMouseLeave={() => setHoverMessage("")}
+                  onMouseEnter={() => setHoverMessages({...hoverMessages, emotional: "This completely arbitrary amount represents the cost of every bug that's made me reconsider my career choices. It covers lost sanity, shattered dreams, and the existential dread induced by CSS not aligning properly. Donate now and help fund my inevitable descent into madness."})}
+                  onMouseLeave={() => setHoverMessages({...hoverMessages, emotional: ""})}
                 >
                   $73.21
                   <p className="text-sm mt-2 text-gray-500">
                     The Developer's Emotional Damage Fund
                   </p>
                 </button>
+                {hoverMessages.emotional && (
+                  <p className="text-center text-purple-400 mt-2 italic">{hoverMessages.emotional}</p>
+                )}
               </div>
               <div className="text-xl text-center relative">
                 <button 
                   className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
                   onClick={() => setShowCustomInput(true)}
-                  onMouseEnter={() => setHoverMessage("Custom amount? Is this a calculated act of pity or just reckless generosity?")}
-                  onMouseLeave={() => setHoverMessage("")}
+                  onMouseEnter={() => setHoverMessages({...hoverMessages, custom: "Custom amount? Is this a calculated act of pity or just reckless generosity?"})}
+                  onMouseLeave={() => setHoverMessages({...hoverMessages, custom: ""})}
                 >
                   Custom Amount
                   <p className="text-sm mt-2 text-gray-500">
                     The Reckless Financial Decision
                   </p>
                 </button>
+                {hoverMessages.custom && !showCustomInput && (
+                  <p className="text-center text-purple-400 mt-2 italic">{hoverMessages.custom}</p>
+                )}
                 {showCustomInput && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-purple-900 rounded-lg p-4 z-10">
                     <input
@@ -158,35 +200,10 @@ export default function Page() {
                 )}
               </div>
             </div>
-            {hoverMessage && (
-              <p className="text-center text-purple-400 pb-4 italic">{hoverMessage}</p>
-            )}
           </div>
         </div>
 
-        <div className="absolute top-8 right-8">
-          <div className="relative w-32 h-32">
-            {/* Developer cartoon - CSS art */}
-            <div className="relative w-32 h-32">
-              {/* Big head */}
-              <div className="absolute w-28 h-28 bg-[#FFE4C4] rounded-full left-2 top-2"></div>
-              {/* Glasses */}
-              <div className="absolute w-24 h-6 border-2 border-black left-4 top-14">
-                <div className="absolute w-10 h-5 bg-[#ADD8E6] left-0 rounded"></div>
-                <div className="absolute w-10 h-5 bg-[#ADD8E6] right-0 rounded"></div>
-              </div>
-              {/* Hoodie */}
-              <div className="absolute w-32 h-16 bg-gray-800 bottom-0 rounded-t-full"></div>
-              {/* Speech bubble */}
-              <div className="absolute -left-64 top-4 w-60 bg-white text-black p-4 rounded-lg">
-                <p className="text-sm font-mono">{devQuote}</p>
-                <div className="absolute -right-4 top-4 w-0 h-0 border-t-8 border-l-8 border-b-8 border-t-transparent border-l-white border-b-transparent"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p className="text-center text-gray-500 my-8 italic">
+        <p className="text-center text-gray-500 my-8 italic px-4">
           Warning: Donations will not be met with sincere gratitude.  
           <br /> 
           In fact, they'll only fuel my deepening cynicism.  
