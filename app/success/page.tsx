@@ -28,7 +28,7 @@ export default function Page() {
       <div className="grid grid-rows-2 w-1/3 h-1/3 border-2 mx-auto mt-24">
   
   <div className="row-span-1 bg-slate-200 text-center p-4">
-    <h1 className="text-lg">Click to donate</h1>
+    <h1 className="text-lg">Clickasdfasdf to donate</h1>
   </div>
 
 
