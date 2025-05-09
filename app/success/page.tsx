@@ -1,45 +1,39 @@
 'use client';
 
-import * as React from 'react';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
+export default function SuccessPage() {
+  const [message, setMessage] = useState("");
 
-export default function Page() {
-
-  const handlePayment = async (amount: number) => {
-    const res = await fetch('/api/checkout', {
-      method: 'POST',
-      body: JSON.stringify({ amount }),
-    });
-    const { url } = await res.json();
-    window.location.href = url;
-  };
-  
-  
+  useEffect(() => {
+    const donationAmount = sessionStorage.getItem('donationAmount');
+    if (donationAmount) {
+      setMessage(`Oh wow, you actually donated ${donationAmount} dollars? I suppose I should be impressed.`);
+      sessionStorage.removeItem('donationAmount'); // Clear stored data after displaying
+    } else {
+      setMessage("You made it to the success page, yet you haven’t contributed to my caffeine addiction. Typical.");
+    }
+  }, []);
 
   return (
-    <main className="bg-slate-500 h-screen">
-      <h1 className="text-center text-3xl pt-8">
-        The ungrateful dev
-      </h1>
-      <div className="grid grid-rows-2 w-1/3 h-1/3 border-2 mx-auto mt-24">
-  
-  <div className="row-span-1 bg-slate-200 text-center p-4">
-    <h1 className="text-lg">Clickasdfasdf to donate</h1>
-  </div>
+    <main className="bg-black h-screen text-gray-300 flex flex-col justify-center items-center">
+      <h1 className="text-5xl text-purple-500 font-bold">Donation Complete*</h1>
+      <p className="text-center text-gray-500 mt-2 italic">
+        *Your generosity will be met with begrudging acknowledgment at best.
+      </p>
 
+      <p className="text-center text-purple-400 mt-6">{message}</p>
 
-  <div className="grid grid-cols-3 row-span-1">
-  
-  
-    <div className="bg-slate-200 text-3xl text-center p-4"><button onClick={() => handlePayment(1)}>Donate $1</button></div>
-    <div className="bg-slate-200 text-3xl text-center p-4">or</div>
-    <div className="bg-slate-200 text-3xl text-center p-4"><button onClick={() => handlePayment(5)}>Custom Amount</button></div>
-  </div>
-</div>
+      <Link href="/">
+        <button className="mt-6 bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-3 px-6 rounded-lg">
+          Go back to continue being a disappointment
+        </button>
+      </Link>
+
+      <p className="text-gray-600 mt-8 text-sm">
+        Refunds? Hilarious concept. But no.
+      </p>
     </main>
   );
 }

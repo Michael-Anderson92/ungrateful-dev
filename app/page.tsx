@@ -1,5 +1,6 @@
 'use client';
-
+// A testament to the futility of digital panhandling
+import { useEffect, useState } from 'react';
 import * as React from 'react';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -8,6 +9,30 @@ import '@fontsource/roboto/700.css';
 
 
 export default function Page() {
+  const [devQuote, setDevQuote] = useState("*adjusts glasses* Oh, visitors. How... thrilling.");
+  const [hoverMessage, setHoverMessage] = useState("");
+  const [customAmount, setCustomAmount] = useState("");
+  
+  const devQuotes = [
+    "*sips coffee* Have you tried turning it off and on again?",
+    "My code doesn't have bugs, it has unexpected features",
+    "*pushes up glasses* Actually, tabs are superior to spaces",
+    "Git push --force, because I live dangerously",
+    "*stares at keyboard* These Cherry MX Blues are my only friends",
+    "Oh, you're donating? Guess I have to pretend I appreciate it.",
+    "My commit messages are just increasingly desperate cries for help",
+    "404: Motivation not found",
+    "They said coding would be fun. They lied."
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const randomQuote = devQuotes[Math.floor(Math.random() * devQuotes.length)];
+      setDevQuote(randomQuote);
+    }, 30000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handlePayment = async (amount: number) => {
     const res = await fetch('/api/checkout', {
@@ -17,29 +42,133 @@ export default function Page() {
     const { url } = await res.json();
     window.location.href = url;
   };
-  
-  
 
+  const handleCustomPayment = () => {
+    const amount = parseFloat(customAmount);
+    if (!isNaN(amount) && amount > 0) {
+      handlePayment(amount);
+    }
+  };
+  
   return (
-    <main className="bg-slate-500 h-screen">
-      <h1 className="text-center text-3xl pt-8">
-        The ungrateful dev
-      </h1>
-      <div className="grid grid-rows-2 w-1/3 h-1/3 border-2 mx-auto mt-24">
-  
-  <div className="row-span-1 bg-slate-200 text-center p-4">
-    <h1 className="text-lg">Click to donate</h1>
-  </div>
+    <main className="bg-black min-h-screen text-gray-300 relative flex flex-col">
+      <div className="flex-grow">
+        <h1 className="text-center text-5xl pt-12 text-purple-500 font-bold">
+          The Ungrateful Developer
+        </h1>
+        <p className="text-center text-gray-500 mt-2 italic">*sigh* ...I guess you can donate or whatever</p>
+        
+        <div className="flex justify-center mt-16">
+          <div className="w-2/3 border-2 border-purple-800 rounded-lg bg-gray-900">
+            <div className="text-center p-8">
+              <h1 className="text-2xl text-purple-400">
+                Oh look, another person who thinks they can buy my validation
+                <p className="text-sm text-gray-500 mt-4">
+                  "Your donation helps support my chronic eye-rolling condition"
+                </p>
+              </h1>
+            </div>
 
+            <div className="grid grid-cols-4 gap-6 p-8">
+              <div className="text-xl text-center">
+                <button 
+                  className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                  onClick={() => handlePayment(1)}
+                  onMouseEnter={() => setHoverMessage("Wow, a whole dollar? Do I owe you change?")}
+                  onMouseLeave={() => setHoverMessage("")}
+                >
+                  $1
+                  <p className="text-sm mt-2 text-gray-500">
+                  *Slow Clap* <br></br>The Sympathy Donation
+                  </p>
+                </button>
+              </div>
+              <div className="text-xl text-center">
+                <button 
+                  className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                  onClick={() => handlePayment(5)}
+                  onMouseEnter={() => setHoverMessage("Five bucks? Big spender over here. What, are you trying to impress me?")}
+                  onMouseLeave={() => setHoverMessage("")}
+                >
+                  $5
+                  <p className="text-sm mt-2 text-gray-500">
+                  The Slightly Less Insulting Donation
+                  </p>
+                </button>
+              </div>
+              <div className="text-xl text-center">
+                <button 
+                  className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                  onClick={() => handlePayment(73.21)}
+                  onMouseEnter={() => setHoverMessage("This completely arbitrary amount represents the cost of every bug that's made me reconsider my career choices. It covers lost sanity, shattered dreams, and the existential dread induced by CSS not aligning properly. Donate now and help fund my inevitable descent into madness.")}
+                  onMouseLeave={() => setHoverMessage("")}
+                >
+                  $73.21
+                  <p className="text-sm mt-2 text-gray-500">
+                    The Developer's Emotional Damage Fund
+                  </p>
+                </button>
+              </div>
+              <div className="text-xl text-center">
+                <div className="flex flex-col">
+                  <button 
+                    className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                    onClick={handleCustomPayment}
+                    onMouseEnter={() => setHoverMessage("Custom amount? Is this a calculated act of pity or just reckless generosity?")}
+                    onMouseLeave={() => setHoverMessage("")}
+                  >
+                    Custom
+                    <p className="text-sm mt-2 text-gray-500">
+                    The Reckless Financial Decision
+                    </p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            {hoverMessage && (
+              <p className="text-center text-purple-400 pb-4 italic">{hoverMessage}</p>
+            )}
+          </div>
+        </div>
 
-  <div className="grid grid-cols-3 row-span-1">
-  
-  
-    <div className="bg-slate-200 text-3xl text-center p-4"><button onClick={() => handlePayment(1)}>Donate $1</button></div>
-    <div className="bg-slate-200 text-3xl text-center p-4">or</div>
-    <div className="bg-slate-200 text-3xl text-center p-4"><button onClick={() => handlePayment(5)}>Custom Amount</button></div>
-  </div>
-</div>
+        <div className="absolute top-8 right-8">
+          <div className="relative w-32 h-32">
+            {/* Developer cartoon - CSS art */}
+            <div className="relative w-32 h-32">
+              {/* Big head */}
+              <div className="absolute w-28 h-28 bg-[#FFE4C4] rounded-full left-2 top-2"></div>
+              {/* Glasses */}
+              <div className="absolute w-24 h-6 border-2 border-black left-4 top-14">
+                <div className="absolute w-10 h-5 bg-[#ADD8E6] left-0 rounded"></div>
+                <div className="absolute w-10 h-5 bg-[#ADD8E6] right-0 rounded"></div>
+              </div>
+              {/* Hoodie */}
+              <div className="absolute w-32 h-16 bg-gray-800 bottom-0 rounded-t-full"></div>
+              {/* Speech bubble */}
+              <div className="absolute -left-64 top-4 w-60 bg-white text-black p-4 rounded-lg">
+                <p className="text-sm font-mono">{devQuote}</p>
+                <div className="absolute -right-4 top-4 w-0 h-0 border-t-8 border-l-8 border-b-8 border-t-transparent border-l-white border-b-transparent"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-center text-gray-500 my-8 italic">
+          Warning: Donations will not be met with sincere gratitude.  
+          <br /> 
+          In fact, they'll only fuel my deepening cynicism.  
+          <br />
+          If you're expecting a thank-you note, you must be new here.  
+        </p>
+      </div>
+      <footer className="bg-gray-900 text-gray-400 text-center p-4 w-full mt-auto">
+        <p>
+          © {new Date().getFullYear()} Michael Anderson | CrossHaven Web Solutions. 
+        </p>
+        <p className="text-sm italic">
+          All rights reserved. Not that you'd want them.
+        </p>
+      </footer>
     </main>
   );
 }
