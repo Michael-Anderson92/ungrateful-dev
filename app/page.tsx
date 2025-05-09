@@ -12,6 +12,7 @@ export default function Page() {
   const [devQuote, setDevQuote] = useState("*adjusts glasses* Oh, visitors. How... thrilling.");
   const [hoverMessage, setHoverMessage] = useState("");
   const [customAmount, setCustomAmount] = useState("");
+  const [showCustomInput, setShowCustomInput] = useState(false);
   
   const devQuotes = [
     "*sips coffee* Have you tried turning it off and on again?",
@@ -35,9 +36,13 @@ export default function Page() {
   }, []);
 
   const handlePayment = async (amount: number) => {
+    const amountInCents = Math.round(amount * 100);  // Converts 73.21 -> 7321 cents correctly
     const res = await fetch('/api/checkout', {
       method: 'POST',
-      body: JSON.stringify({ amount }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ amount: amountInCents }),
     });
     const { url } = await res.json();
     window.location.href = url;
@@ -47,6 +52,8 @@ export default function Page() {
     const amount = parseFloat(customAmount);
     if (!isNaN(amount) && amount > 0) {
       handlePayment(amount);
+      setShowCustomInput(false);
+      setCustomAmount("");
     }
   };
   
@@ -109,20 +116,46 @@ export default function Page() {
                   </p>
                 </button>
               </div>
-              <div className="text-xl text-center">
-                <div className="flex flex-col">
-                  <button 
-                    className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
-                    onClick={handleCustomPayment}
-                    onMouseEnter={() => setHoverMessage("Custom amount? Is this a calculated act of pity or just reckless generosity?")}
-                    onMouseLeave={() => setHoverMessage("")}
-                  >
-                    Custom
-                    <p className="text-sm mt-2 text-gray-500">
+              <div className="text-xl text-center relative">
+                <button 
+                  className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                  onClick={() => setShowCustomInput(true)}
+                  onMouseEnter={() => setHoverMessage("Custom amount? Is this a calculated act of pity or just reckless generosity?")}
+                  onMouseLeave={() => setHoverMessage("")}
+                >
+                  Custom Amount
+                  <p className="text-sm mt-2 text-gray-500">
                     The Reckless Financial Decision
-                    </p>
-                  </button>
-                </div>
+                  </p>
+                </button>
+                {showCustomInput && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-purple-900 rounded-lg p-4 z-10">
+                    <input
+                      type="number"
+                      value={customAmount}
+                      onChange={(e) => setCustomAmount(e.target.value)}
+                      className="w-full mb-2 bg-purple-800 text-gray-300 p-2 rounded-lg"
+                      placeholder="Amount"
+                      min="0.01"
+                      step="0.01"
+                      autoFocus
+                    />
+                    <div className="flex gap-2 w-full">
+                      <button 
+                        onClick={() => setShowCustomInput(false)}
+                        className="flex-1 bg-gray-700 text-sm py-2 rounded-lg hover:bg-gray-600"
+                      >
+                        Cancel
+                      </button>
+                      <button 
+                        onClick={handleCustomPayment}
+                        className="flex-1 bg-purple-700 text-sm py-2 rounded-lg hover:bg-purple-600"
+                      >
+                        Donate
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             {hoverMessage && (

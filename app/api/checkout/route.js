@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(req) {
-  const { amount } = await req.json();
+  const { amount } = await req.json();  // Amount is already in cents
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
@@ -12,7 +12,7 @@ export async function POST(req) {
         price_data: {
           currency: 'usd',
           product_data: { name: 'Donation' },
-          unit_amount: amount * 100,
+          unit_amount: amount,  // No need to multiply again
         },
         quantity: 1,
       },
