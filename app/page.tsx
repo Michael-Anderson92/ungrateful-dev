@@ -171,7 +171,13 @@ export default function Page() {
                   <p className="text-center text-purple-400 mt-2 italic">{hoverMessages.custom}</p>
                 )}
                 {showCustomInput && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-purple-900 rounded-lg p-4 z-10">
+                  <div 
+                    className="absolute inset-0 flex flex-col items-center justify-center bg-purple-900 rounded-lg p-4 z-10"
+                    onMouseLeave={() => {
+                      setShowCustomInput(false);
+                      setCustomAmount("");
+                    }}
+                  >
                     <input
                       type="number"
                       value={customAmount}
