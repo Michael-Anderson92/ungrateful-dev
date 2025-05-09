@@ -9,7 +9,7 @@ import '@fontsource/roboto/700.css';
 
 export default function Page() {
 
-  const handlePayment = async (amount) => {
+  const handlePayment = async (amount: number) => {
     const res = await fetch('/api/checkout', {
       method: 'POST',
       body: JSON.stringify({ amount }),
