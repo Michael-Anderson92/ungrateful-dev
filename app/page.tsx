@@ -71,7 +71,7 @@ export default function Page() {
             The Ungrateful Developer
           </h1>
           <p className="absolute top-8 left-8 text-amber-800 text-xl text-center">Stay tuned for frequent updates!</p>
-          <p className="text-center text-gray-400 mt-2 italic">*sigh* ...I guess you can donate or whatever</p>
+          <p className="text-center text-gray-400 mt-2 italic">*sigh* ...I suppose you can donate or whatever</p>
 
           {/* Developer moved below title on mobile */}
           <div className="md:absolute static md:top-8 md:right-8 flex justify-center mt-8 md:mt-0">
@@ -232,39 +232,20 @@ export default function Page() {
 
                 I'm actually quite the opposite in reality, and I <span className="text-rose-500">love</span> what I do!
 
-                <br></br><br></br>Thanks for stopping by! My name is Michael Anderson, and I genuinely enjoy coming into my office every day to change the world (or at least my code (ง ͠° ͟ل͜ ͡°)ง). I'm overly humorous, and I frankly don't care. Sue me!
+                <br></br><br></br>Thanks for stopping by! My name is Michael Anderson, and I genuinely enjoy coming into my office every day to change the world (or at least my code <span className="text-rose-500">(ง ͠° ͟ل͜ ͡°)ง</span>). I'm overly humorous, and I frankly don't care. Sue me!
 
-                <br></br><br></br>About six months ago, I dove headfirst into software engineering, and aside from spending time with my two amazing boys, it's become my daily source of excitement and growth.
+                <br></br><br></br>End of 2024, I dove headfirst into software engineering, and aside from spending time with my two beautiful boys, it's become my daily source of excitement and growth.
 
-                I'm early in my journey as a developer, but I'm committed to learning, improving, and building things that matter. Whether it's solving a tricky bug or shipping a new feature, I find real joy in the process and the progress.
+                I'm early in my journey as a developer, but I've adapted a growth mindset, and I'm committed to learning, improving, and building things that matter. Whether it's solving a tricky bug or shipping a new feature, I find real joy in the process and the progress.
 
-                When I'm not writing code, you'll probably find me:
-
-                Building LEGO contraptions with my kids
-
-                Coaching baseball
-
-                Enjoying time with my family
+                When I'm not writing code, you'll probably find me building LEGO contraptions with my kids, coaching baseball, orenjoying time with my family
 
                 I keep things pretty simple, but I really believe you can make a difference from your own home if you stick with it. I appreciate every bit of support and encouragement along the way.
 
                 Yours truly,
                 Michael Anderson
               </p>
-              <p>
-                I've mastered the art of debugging at 3 AM, arguing about tabs vs spaces, and pretending to
-                understand Docker. My GitHub contributions are mostly me fixing my own bugs, and my Stack
-                Overflow reputation is built on answering questions I had to Google first.
-              </p>
-              <p>
-                When I'm not writing code that will inevitably need refactoring, I'm probably:
-              </p>
-              <ul className="list-disc list-inside ml-4 space-y-2">
-                <li>Debating whether to update my dependencies or live dangerously</li>
-                <li>Writing documentation that no one will read</li>
-                <li>Pretending to understand the latest JavaScript framework</li>
-                <li>Counting the days until my next existential crisis</li>
-              </ul>
+              
               <p className="text-indigo-400 mt-4">
                 *sips coffee* Now that you know more about me than you probably wanted to,
                 feel free to throw some money at my problems. It won't fix them, but it'll
