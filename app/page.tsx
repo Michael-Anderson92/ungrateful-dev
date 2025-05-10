@@ -111,7 +111,7 @@ export default function Page() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 p-4 md:p-8">
               <div className="text-xl text-center">
                 <button
-                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg relative"
                   onClick={() => handlePayment(1)}
                   onMouseEnter={() => setHoverMessages({ ...hoverMessages, dollar: "Wow, a whole dollar? Do I owe you change?" })}
                   onMouseLeave={() => setHoverMessages({ ...hoverMessages, dollar: "" })}
@@ -120,14 +120,17 @@ export default function Page() {
                   <p className="text-sm mt-2 text-gray-400">
                     *Slow Clap* <br></br>The Sympathy Donation
                   </p>
+                  {hoverMessages.dollar && (
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 bg-gray-100 text-gray-900 p-3 rounded-lg shadow-lg">
+                      <p className="text-sm font-mono">{hoverMessages.dollar}</p>
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-100"></div>
+                    </div>
+                  )}
                 </button>
-                {hoverMessages.dollar && (
-                  <p className="text-center text-indigo-300 mt-2 italic">{hoverMessages.dollar}</p>
-                )}
               </div>
               <div className="text-xl text-center">
                 <button
-                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg relative"
                   onClick={() => handlePayment(5)}
                   onMouseEnter={() => setHoverMessages({ ...hoverMessages, five: "Five bucks? Big spender over here. What, are you trying to impress me?" })}
                   onMouseLeave={() => setHoverMessages({ ...hoverMessages, five: "" })}
@@ -136,14 +139,17 @@ export default function Page() {
                   <p className="text-sm mt-2 text-gray-400">
                     The Slightly Less Insulting Donation
                   </p>
+                  {hoverMessages.five && (
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 bg-gray-100 text-gray-900 p-3 rounded-lg shadow-lg">
+                      <p className="text-sm font-mono">{hoverMessages.five}</p>
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-100"></div>
+                    </div>
+                  )}
                 </button>
-                {hoverMessages.five && (
-                  <p className="text-center text-indigo-300 mt-2 italic">{hoverMessages.five}</p>
-                )}
               </div>
               <div className="text-xl text-center">
                 <button
-                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg relative"
                   onClick={() => handlePayment(73.21)}
                   onMouseEnter={() => setHoverMessages({ ...hoverMessages, emotional: "This completely arbitrary amount represents the cost of every bug that's made me reconsider my career choices. It covers lost sanity, shattered dreams, and the existential dread induced by CSS not aligning properly. Donate now and help fund my inevitable descent into madness." })}
                   onMouseLeave={() => setHoverMessages({ ...hoverMessages, emotional: "" })}
@@ -152,14 +158,17 @@ export default function Page() {
                   <p className="text-sm mt-2 text-gray-400">
                     The Developer's Emotional Damage Fund
                   </p>
+                  {hoverMessages.emotional && (
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-100 text-gray-900 p-3 rounded-lg shadow-lg">
+                      <p className="text-sm font-mono">{hoverMessages.emotional}</p>
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-100"></div>
+                    </div>
+                  )}
                 </button>
-                {hoverMessages.emotional && (
-                  <p className="text-center text-indigo-300 mt-2 italic">{hoverMessages.emotional}</p>
-                )}
               </div>
               <div className="text-xl text-center relative">
                 <button
-                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg relative"
                   onClick={() => setShowCustomInput(true)}
                   onMouseEnter={() => setHoverMessages({ ...hoverMessages, custom: "Custom amount? Is this a calculated act of pity or just reckless generosity?" })}
                   onMouseLeave={() => setHoverMessages({ ...hoverMessages, custom: "" })}
@@ -168,10 +177,13 @@ export default function Page() {
                   <p className="text-sm mt-2 text-gray-400">
                     The Reckless Financial Decision
                   </p>
+                  {hoverMessages.custom && !showCustomInput && (
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 bg-gray-100 text-gray-900 p-3 rounded-lg shadow-lg">
+                      <p className="text-sm font-mono">{hoverMessages.custom}</p>
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-100"></div>
+                    </div>
+                  )}
                 </button>
-                {hoverMessages.custom && !showCustomInput && (
-                  <p className="text-center text-indigo-300 mt-2 italic">{hoverMessages.custom}</p>
-                )}
                 {showCustomInput && (
                   <div
                     className="absolute inset-0 flex flex-col items-center justify-center bg-indigo-800 rounded-lg p-4 z-10"
@@ -218,26 +230,26 @@ export default function Page() {
               <p className="italic text-center text-gray-400">*adjusts glasses with a sigh* <span className="text-rose-500">(just-kidding!)</span></p>
               <p className="text-center">
 
-               I'm actually quite the opposite in reality, and I <span className="text-rose-500">love</span> what I do! 
-               
-               <br></br><br></br>Thanks for stopping by! My name is Michael Anderson, and I genuinely enjoy coming into my office every day to change the world (or at least my code (ง ͠° ͟ل͜ ͡°)ง). I'm overly humorous, and I frankly don't care. Sue me!
-               
-               <br></br><br></br>About six months ago, I dove headfirst into software engineering, and aside from spending time with my two amazing boys, it’s become my daily source of excitement and growth.
+                I'm actually quite the opposite in reality, and I <span className="text-rose-500">love</span> what I do!
 
-I’m early in my journey as a developer, but I’m committed to learning, improving, and building things that matter. Whether it’s solving a tricky bug or shipping a new feature, I find real joy in the process and the progress.
+                <br></br><br></br>Thanks for stopping by! My name is Michael Anderson, and I genuinely enjoy coming into my office every day to change the world (or at least my code (ง ͠° ͟ل͜ ͡°)ง). I'm overly humorous, and I frankly don't care. Sue me!
 
-When I’m not writing code, you’ll probably find me:
+                <br></br><br></br>About six months ago, I dove headfirst into software engineering, and aside from spending time with my two amazing boys, it's become my daily source of excitement and growth.
 
-Building LEGO contraptions with my kids
+                I'm early in my journey as a developer, but I'm committed to learning, improving, and building things that matter. Whether it's solving a tricky bug or shipping a new feature, I find real joy in the process and the progress.
 
-Coaching baseball
+                When I'm not writing code, you'll probably find me:
 
-Enjoying time with my family
+                Building LEGO contraptions with my kids
 
-I keep things pretty simple, but I really believe you can make a difference from your own home if you stick with it. I appreciate every bit of support and encouragement along the way.
+                Coaching baseball
 
-Yours truly,
-Michael Anderson
+                Enjoying time with my family
+
+                I keep things pretty simple, but I really believe you can make a difference from your own home if you stick with it. I appreciate every bit of support and encouragement along the way.
+
+                Yours truly,
+                Michael Anderson
               </p>
               <p>
                 I've mastered the art of debugging at 3 AM, arguing about tabs vs spaces, and pretending to
