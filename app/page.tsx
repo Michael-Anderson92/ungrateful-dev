@@ -8,6 +8,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 
+
 export default function Page() {
   const [devQuote, setDevQuote] = useState("*adjusts glasses* Oh, visitors. How... thrilling.");
   const [hoverMessages, setHoverMessages] = useState({
@@ -18,7 +19,7 @@ export default function Page() {
   });
   const [customAmount, setCustomAmount] = useState("");
   const [showCustomInput, setShowCustomInput] = useState(false);
-  
+
   const devQuotes = [
     "*sips coffee* Have you tried turning it off and on again?",
     "My code doesn't have bugs, it has unexpected features",
@@ -61,16 +62,17 @@ export default function Page() {
       setCustomAmount("");
     }
   };
-  
+
   return (
-    <main className="bg-black min-h-screen text-gray-300 relative flex flex-col">
+    <main className="bg-gray-950 min-h-screen text-gray-200 relative flex flex-col">
       <div className="flex-grow px-4">
         <div className="relative">
-          <h1 className="text-center text-4xl md:text-5xl pt-12 text-purple-500 font-bold">
+          <h1 className="text-center text-4xl md:text-5xl pt-12 text-indigo-400 font-bold">
             The Ungrateful Developer
           </h1>
-          <p className="text-center text-gray-500 mt-2 italic">*sigh* ...I guess you can donate or whatever</p>
-          
+          <p className="absolute top-8 left-8 text-amber-800 text-xl text-center">Stay tuned for frequent updates!</p>
+          <p className="text-center text-gray-400 mt-2 italic">*sigh* ...I guess you can donate or whatever</p>
+
           {/* Developer moved below title on mobile */}
           <div className="md:absolute static md:top-8 md:right-8 flex justify-center mt-8 md:mt-0">
             <div className="relative w-32 h-32">
@@ -84,23 +86,23 @@ export default function Page() {
                   <div className="absolute w-10 h-5 bg-[#ADD8E6] right-0 rounded"></div>
                 </div>
                 {/* Hoodie */}
-                <div className="absolute w-32 h-16 bg-gray-800 bottom-0 rounded-t-full"></div>
+                <div className="absolute w-32 h-16 bg-gray-700 bottom-0 rounded-t-full"></div>
                 {/* Speech bubble */}
-                <div className="absolute -left-64 top-4 w-60 bg-white text-black p-4 rounded-lg hidden md:block">
+                <div className="absolute -left-64 top-4 w-60 bg-gray-100 text-gray-900 p-4 rounded-lg hidden md:block">
                   <p className="text-sm font-mono">{devQuote}</p>
-                  <div className="absolute -right-4 top-4 w-0 h-0 border-t-8 border-l-8 border-b-8 border-t-transparent border-l-white border-b-transparent"></div>
+                  <div className="absolute -right-4 top-4 w-0 h-0 border-t-8 border-l-8 border-b-8 border-t-transparent border-l-gray-100 border-b-transparent"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
+
         <div className="flex justify-center mt-8 md:mt-16">
-          <div className="w-full md:w-2/3 border-2 border-purple-800 rounded-lg bg-gray-900">
+          <div className="w-full md:w-2/3 border border-indigo-700 rounded-lg bg-gray-900">
             <div className="text-center p-4 md:p-8">
-              <h1 className="text-xl md:text-2xl text-purple-400">
+              <h1 className="text-xl md:text-2xl text-indigo-300">
                 Oh look, another person who thinks they can buy my validation
-                <p className="text-sm text-gray-500 mt-4">
+                <p className="text-sm text-gray-400 mt-4">
                   "Your donation helps support my chronic eye-rolling condition"
                 </p>
               </h1>
@@ -108,71 +110,71 @@ export default function Page() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 p-4 md:p-8">
               <div className="text-xl text-center">
-                <button 
-                  className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                <button
+                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
                   onClick={() => handlePayment(1)}
-                  onMouseEnter={() => setHoverMessages({...hoverMessages, dollar: "Wow, a whole dollar? Do I owe you change?"})}
-                  onMouseLeave={() => setHoverMessages({...hoverMessages, dollar: ""})}
+                  onMouseEnter={() => setHoverMessages({ ...hoverMessages, dollar: "Wow, a whole dollar? Do I owe you change?" })}
+                  onMouseLeave={() => setHoverMessages({ ...hoverMessages, dollar: "" })}
                 >
                   $1
-                  <p className="text-sm mt-2 text-gray-500">
-                  *Slow Clap* <br></br>The Sympathy Donation
+                  <p className="text-sm mt-2 text-gray-400">
+                    *Slow Clap* <br></br>The Sympathy Donation
                   </p>
                 </button>
                 {hoverMessages.dollar && (
-                  <p className="text-center text-purple-400 mt-2 italic">{hoverMessages.dollar}</p>
+                  <p className="text-center text-indigo-300 mt-2 italic">{hoverMessages.dollar}</p>
                 )}
               </div>
               <div className="text-xl text-center">
-                <button 
-                  className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                <button
+                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
                   onClick={() => handlePayment(5)}
-                  onMouseEnter={() => setHoverMessages({...hoverMessages, five: "Five bucks? Big spender over here. What, are you trying to impress me?"})}
-                  onMouseLeave={() => setHoverMessages({...hoverMessages, five: ""})}
+                  onMouseEnter={() => setHoverMessages({ ...hoverMessages, five: "Five bucks? Big spender over here. What, are you trying to impress me?" })}
+                  onMouseLeave={() => setHoverMessages({ ...hoverMessages, five: "" })}
                 >
                   $5
-                  <p className="text-sm mt-2 text-gray-500">
-                  The Slightly Less Insulting Donation
+                  <p className="text-sm mt-2 text-gray-400">
+                    The Slightly Less Insulting Donation
                   </p>
                 </button>
                 {hoverMessages.five && (
-                  <p className="text-center text-purple-400 mt-2 italic">{hoverMessages.five}</p>
+                  <p className="text-center text-indigo-300 mt-2 italic">{hoverMessages.five}</p>
                 )}
               </div>
               <div className="text-xl text-center">
-                <button 
-                  className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                <button
+                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
                   onClick={() => handlePayment(73.21)}
-                  onMouseEnter={() => setHoverMessages({...hoverMessages, emotional: "This completely arbitrary amount represents the cost of every bug that's made me reconsider my career choices. It covers lost sanity, shattered dreams, and the existential dread induced by CSS not aligning properly. Donate now and help fund my inevitable descent into madness."})}
-                  onMouseLeave={() => setHoverMessages({...hoverMessages, emotional: ""})}
+                  onMouseEnter={() => setHoverMessages({ ...hoverMessages, emotional: "This completely arbitrary amount represents the cost of every bug that's made me reconsider my career choices. It covers lost sanity, shattered dreams, and the existential dread induced by CSS not aligning properly. Donate now and help fund my inevitable descent into madness." })}
+                  onMouseLeave={() => setHoverMessages({ ...hoverMessages, emotional: "" })}
                 >
                   $73.21
-                  <p className="text-sm mt-2 text-gray-500">
+                  <p className="text-sm mt-2 text-gray-400">
                     The Developer's Emotional Damage Fund
                   </p>
                 </button>
                 {hoverMessages.emotional && (
-                  <p className="text-center text-purple-400 mt-2 italic">{hoverMessages.emotional}</p>
+                  <p className="text-center text-indigo-300 mt-2 italic">{hoverMessages.emotional}</p>
                 )}
               </div>
               <div className="text-xl text-center relative">
-                <button 
-                  className="w-full bg-purple-900 hover:bg-purple-700 text-gray-300 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
+                <button
+                  className="w-full bg-indigo-800 hover:bg-indigo-700 text-gray-200 font-bold py-4 px-6 rounded-lg transform hover:scale-105 transition duration-200 shadow-lg"
                   onClick={() => setShowCustomInput(true)}
-                  onMouseEnter={() => setHoverMessages({...hoverMessages, custom: "Custom amount? Is this a calculated act of pity or just reckless generosity?"})}
-                  onMouseLeave={() => setHoverMessages({...hoverMessages, custom: ""})}
+                  onMouseEnter={() => setHoverMessages({ ...hoverMessages, custom: "Custom amount? Is this a calculated act of pity or just reckless generosity?" })}
+                  onMouseLeave={() => setHoverMessages({ ...hoverMessages, custom: "" })}
                 >
                   Custom Amount
-                  <p className="text-sm mt-2 text-gray-500">
+                  <p className="text-sm mt-2 text-gray-400">
                     The Reckless Financial Decision
                   </p>
                 </button>
                 {hoverMessages.custom && !showCustomInput && (
-                  <p className="text-center text-purple-400 mt-2 italic">{hoverMessages.custom}</p>
+                  <p className="text-center text-indigo-300 mt-2 italic">{hoverMessages.custom}</p>
                 )}
                 {showCustomInput && (
-                  <div 
-                    className="absolute inset-0 flex flex-col items-center justify-center bg-purple-900 rounded-lg p-4 z-10"
+                  <div
+                    className="absolute inset-0 flex flex-col items-center justify-center bg-indigo-800 rounded-lg p-4 z-10"
                     onMouseLeave={() => {
                       setShowCustomInput(false);
                       setCustomAmount("");
@@ -182,22 +184,22 @@ export default function Page() {
                       type="number"
                       value={customAmount}
                       onChange={(e) => setCustomAmount(e.target.value)}
-                      className="w-full mb-2 bg-purple-800 text-gray-300 p-2 rounded-lg"
+                      className="w-full mb-2 bg-indigo-700 text-gray-200 p-2 rounded-lg"
                       placeholder="Amount"
                       min="0.01"
                       step="0.01"
                       autoFocus
                     />
                     <div className="flex gap-2 w-full">
-                      <button 
+                      <button
                         onClick={() => setShowCustomInput(false)}
-                        className="flex-1 bg-gray-700 text-sm py-2 rounded-lg hover:bg-gray-600"
+                        className="flex-1 bg-gray-600 text-sm py-2 rounded-lg hover:bg-gray-500"
                       >
                         Cancel
                       </button>
-                      <button 
+                      <button
                         onClick={handleCustomPayment}
-                        className="flex-1 bg-purple-700 text-sm py-2 rounded-lg hover:bg-purple-600"
+                        className="flex-1 bg-indigo-600 text-sm py-2 rounded-lg hover:bg-indigo-500"
                       >
                         Donate
                       </button>
@@ -209,17 +211,68 @@ export default function Page() {
           </div>
         </div>
 
-        <p className="text-center text-gray-500 my-8 italic px-4">
-          Warning: Donations will not be met with sincere gratitude.  
-          <br /> 
-          In fact, they'll only fuel my deepening cynicism.  
+        <div className="flex justify-center mt-8">
+          <div className="w-full md:w-2/3 border border-indigo-700 rounded-lg bg-gray-900 p-6">
+            <h2 className="text-2xl text-indigo-300 mb-4 text-center">About This Developer</h2>
+            <div className="space-y-4 text-gray-300">
+              <p className="italic text-center text-gray-400">*adjusts glasses with a sigh* <span className="text-rose-500">(just-kidding!)</span></p>
+              <p className="text-center">
+
+               I'm actually quite the opposite in reality, and I <span className="text-rose-500">love</span> what I do! 
+               
+               <br></br><br></br>Thanks for stopping by! My name is Michael Anderson, and I genuinely enjoy coming into my office every day to change the world (or at least my code (ง ͠° ͟ل͜ ͡°)ง). I'm overly humorous, and I frankly don't care. Sue me!
+               
+               <br></br><br></br>About six months ago, I dove headfirst into software engineering, and aside from spending time with my two amazing boys, it’s become my daily source of excitement and growth.
+
+I’m early in my journey as a developer, but I’m committed to learning, improving, and building things that matter. Whether it’s solving a tricky bug or shipping a new feature, I find real joy in the process and the progress.
+
+When I’m not writing code, you’ll probably find me:
+
+Building LEGO contraptions with my kids
+
+Coaching baseball
+
+Enjoying time with my family
+
+I keep things pretty simple, but I really believe you can make a difference from your own home if you stick with it. I appreciate every bit of support and encouragement along the way.
+
+Yours truly,
+Michael Anderson
+              </p>
+              <p>
+                I've mastered the art of debugging at 3 AM, arguing about tabs vs spaces, and pretending to
+                understand Docker. My GitHub contributions are mostly me fixing my own bugs, and my Stack
+                Overflow reputation is built on answering questions I had to Google first.
+              </p>
+              <p>
+                When I'm not writing code that will inevitably need refactoring, I'm probably:
+              </p>
+              <ul className="list-disc list-inside ml-4 space-y-2">
+                <li>Debating whether to update my dependencies or live dangerously</li>
+                <li>Writing documentation that no one will read</li>
+                <li>Pretending to understand the latest JavaScript framework</li>
+                <li>Counting the days until my next existential crisis</li>
+              </ul>
+              <p className="text-indigo-400 mt-4">
+                *sips coffee* Now that you know more about me than you probably wanted to,
+                feel free to throw some money at my problems. It won't fix them, but it'll
+                make me slightly less bitter about them.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-center text-gray-400 my-8 italic px-4">
+          Warning: Donations will not be met with sincere gratitude.
           <br />
-          If you're expecting a thank-you note, you must be new here.  
+          In fact, they'll only fuel my deepening cynicism.
+          <br />
+          If you're expecting a thank-you note, you must be new here.
         </p>
       </div>
       <footer className="bg-gray-900 text-gray-400 text-center p-4 w-full mt-auto">
         <p>
-          © {new Date().getFullYear()} Michael Anderson | CrossHaven Web Solutions. 
+          © {new Date().getFullYear()} Michael Anderson | CrossHaven Web Solutions.
         </p>
         <p className="text-sm italic">
           All rights reserved. Not that you'd want them.
