@@ -3,8 +3,13 @@
 import { useState, useEffect } from 'react';
 import ChatInterface from './chat/ChatInterface';
 
+interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
 interface DeveloperSectionProps {
-  chatMessages: any[];
+  chatMessages: ChatMessage[];
   isLoading: boolean;
   chatInput: string;
   setChatInput: (value: string) => void;
@@ -49,7 +54,7 @@ export default function DeveloperSection2({
             alt="Ungrateful Developer"
           />
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-amber-500 text-6xl text-center font-bold transform -rotate-12 bg-black bg-opacity-50 px-4 py-2 rounded-lg">
+          <h1 className="text-amber-500 text-center text-6xl font-bold transform -rotate-12 bg-black bg-opacity-50 px-4 py-2 rounded-lg">
             UNDER CONSTRUCTION
           </h1>
         </div>
