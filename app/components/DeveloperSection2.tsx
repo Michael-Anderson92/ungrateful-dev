@@ -41,13 +41,19 @@ export default function DeveloperSection2({
   }, []);
 
   return (
-    <div className="flex flex-col mt-32 items-center justify-center border-2 border-red-500">
-      <img
-          src="/ungrateful-dev.png"
-          className="w-1/2 h-full align-center object-cover rounded-lg shadow-lg"
-          alt="Ungrateful Developer"
-        />
+    <div className="flex flex-col mt-32 items-center justify-center border-2 border-amber-500">
+      <div className="relative">
+        <img
+            src="/ungrateful-dev.png"
+            className="w-1/2 h-full align-center object-cover rounded-lg shadow-lg mx-auto"
+            alt="Ungrateful Developer"
+          />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1 className="text-amber-500 text-6xl text-center font-bold transform -rotate-12 bg-black bg-opacity-50 px-4 py-2 rounded-lg">
+            UNDER CONSTRUCTION
+          </h1>
         </div>
-    
+      </div>
+    </div>
   );
 }

@@ -4,11 +4,11 @@ export default function AboutDeveloperSection() {
   return (
     <div className="flex justify-center">
       <div className="w-full border border-indigo-700 rounded-lg bg-gray-900 p-6">
-        <h2 className="text-2xl text-indigo-300 mb-4 text-center">About the actual Developer</h2>
+        <h2 className="text-2xl text-indigo-300 mb-4 text-center">About the Actual Developer (not the AI)</h2>
         <div className="space-y-4 text-gray-300 mx-4 md:mx-16">
           <p className="italic text-center text-gray-400">*adjusts glasses with a sigh* <span className="text-rose-500">(just-kidding!)</span></p>
           <p className="text-center">
-            <br></br><br></br>Software Engineer, Digital Artist, and all-around Nerd. That pretty much sums me up. 
+            <br></br>Software Engineer, Digital Artist, and all-around Nerd. That pretty much sums me up. 
             
             A typical work day for me consists of waking up, drinking the morning brew, and dreaming big. 
             

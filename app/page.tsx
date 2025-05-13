@@ -94,7 +94,7 @@ export default function Page() {
         </div>
         
         {/* Right Section - Developer (1/3 viewport on desktop) */}
-        <div className="lg:col-span-1 p-8 h-full">
+        <div className="lg:col-span-2 p-8 h-full">
           <DeveloperSection2
             chatMessages={chatMessages}
             isLoading={isLoading}
