@@ -5,11 +5,12 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import Header from './components/header';
+import Header from './components/Header';
 import PaymentSection from './components/PaymentSection';
-import DeveloperSection2 from './components/DeveloperSection2';
+import DeveloperSection from './components/DeveloperSection';
 import AboutDeveloperSection from './components/AboutDeveloperSection';
 import Footer from './components/Footer';
+import Welcome from './components/Welcome';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -71,37 +72,43 @@ export default function Page() {
             {/* About Developer Section - wrapped for wider container */}
             <div className="flex justify-center">
               <div className="w-full max-w-4xl">
-                <AboutDeveloperSection />
+                <Welcome />
               </div>
             </div>
             
             {/* Payment Section - wrapped for wider container */}
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <div className="w-full max-w-4xl">
                 <PaymentSection />
               </div>
-            </div>
+            </div> */}
             
             {/* Warning Message */}
-            <p className="text-center text-gray-400 italic py-4">
-              Warning: Donations will not be met with sincere gratitude.
-              <br />
-              In fact, they'll only fuel my deepening cynicism.
-              <br />
-              If you're expecting a thank-you note, you must be new here.
-            </p>
+            
           </div>
         </div>
         
+        
         {/* Right Section - Developer (1/3 viewport on desktop) */}
-        <div className="lg:col-span-2 p-8 h-full">
-          <DeveloperSection2
-            chatMessages={chatMessages}
-            isLoading={isLoading}
-            chatInput={chatInput}
-            setChatInput={setChatInput}
-            handleChatSubmit={handleChatSubmit}
-          />
+        <div className="lg:col-span-2 mt-32 p-8 border-r border-gray-800 overflow-y-auto">
+          <div className="space-y-8">
+            {/* About Developer Section - wrapped for wider container */}
+            <div className="flex justify-center">
+              <div className="w-full max-w-4xl">
+                <Welcome />
+              </div>
+            </div>
+            
+            {/* Payment Section - wrapped for wider container */}
+            {/* <div className="flex justify-center">
+              <div className="w-full max-w-4xl">
+                <PaymentSection />
+              </div>
+            </div> */}
+            
+            {/* Warning Message */}
+            
+          </div>
         </div>
       </div>
       
